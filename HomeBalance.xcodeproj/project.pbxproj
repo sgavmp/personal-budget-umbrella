@@ -1,0 +1,865 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 54;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0B8F882CF5A97EE46EE86FAE /* ModelVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = B770483A81DD82366910A35C /* ModelVersion.swift */; };
+		0E0BAB2D67E315AA1EBBDEB6 /* ImportMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F79387C5DDFD6CFD350FB0 /* ImportMapping.swift */; };
+		18BF680066085CF320BD2217 /* DefaultCategories.json in Resources */ = {isa = PBXBuildFile; fileRef = CA8D031496FB700147051889 /* DefaultCategories.json */; };
+		1A705ED45E95945A29287C41 /* String+Hashing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF19171C8B77C5B8321F5CE /* String+Hashing.swift */; };
+		20D065D331B242A94A0B01C9 /* Decimal+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A455DDB9F527D9AC623F19FE /* Decimal+Extensions.swift */; };
+		221B59ABB32002C743C4C655 /* CoreXLSX in Frameworks */ = {isa = PBXBuildFile; productRef = 67AEF554F924D8208F77C132 /* CoreXLSX */; };
+		27A4C620B3B62F2B347F06C8 /* Budget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5EC3214E04B41BF392B5CE /* Budget.swift */; };
+		2DDC3212C52A1BA7E1FC45D9 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C1577EB96BB63607E22109 /* Category.swift */; };
+		306557840672611FD991195D /* DefaultCategorySeederTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6824318D503ABF50C5F284E /* DefaultCategorySeederTests.swift */; };
+		3113D4DC4359665D889DD666 /* Decimal+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A455DDB9F527D9AC623F19FE /* Decimal+Extensions.swift */; };
+		31B95B07A7AD2641C5C28629 /* ImportBatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A38F0DA269E0457198BE4B /* ImportBatch.swift */; };
+		34673A3A9750ADF3C863511F /* CategoryRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3AAEABBB98130D3DC00EF9 /* CategoryRule.swift */; };
+		40F33D65066D5DA8892E39CF /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A3FD7B2351CD5D6D0D9C96 /* Date+Extensions.swift */; };
+		495271ADF0C710B47620C5F3 /* HomeBalanceApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716FEBB43E0E67BCB3546E87 /* HomeBalanceApp.swift */; };
+		4F5A89F8925EFF8183C5D6AD /* Household.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A4EA458E0CF433691AA437 /* Household.swift */; };
+		51D93268F9CA0736516F827F /* StringHashingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA37E4BB5CB271DE07967395 /* StringHashingTests.swift */; };
+		618405B37A81E5B569945C0F /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C1577EB96BB63607E22109 /* Category.swift */; };
+		627828D330A2FCF9086742C2 /* DecimalExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B9830C8DBE0D91F9560AA2 /* DecimalExtensionsTests.swift */; };
+		6F4A75D19CBB4320CDD9B14E /* AppCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD94162AF426CCADB652F6B /* AppCommands.swift */; };
+		70D367167FA5764F9A428579 /* BankAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C68D3C58BB6B05D6473C2A /* BankAccount.swift */; };
+		71927CB5327C9874A13080C8 /* ImportMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F79387C5DDFD6CFD350FB0 /* ImportMapping.swift */; };
+		72388168BC562A7D8490A6F0 /* HomeBalanceApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716FEBB43E0E67BCB3546E87 /* HomeBalanceApp.swift */; };
+		74F65FA9E5B55CF2F008F257 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91D9472F943AC576395FF41 /* ContentView.swift */; };
+		77003980846722621CFA237D /* AppCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD94162AF426CCADB652F6B /* AppCommands.swift */; };
+		794DA36D9B9F130FF85128BA /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D995C260AFC9B78C0A9BF6A /* Transaction.swift */; };
+		7EB5761AD1A42A46712446F3 /* ImportBatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A38F0DA269E0457198BE4B /* ImportBatch.swift */; };
+		83AB7B40A8649E28A2FCDF84 /* Member.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B3D1D5C161FF39B8ACE84E /* Member.swift */; };
+		95A71A7C85E1A0295BC2A568 /* DefaultCategorySeeder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74ACF39DE6E4B7B0C01058EA /* DefaultCategorySeeder.swift */; };
+		96CF574FD0BBBD918DEB65AB /* DefaultCategories.json in Resources */ = {isa = PBXBuildFile; fileRef = CA8D031496FB700147051889 /* DefaultCategories.json */; };
+		96DA27892427E465760AF35C /* BankAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C68D3C58BB6B05D6473C2A /* BankAccount.swift */; };
+		9D26178687D901B1B854909C /* Budget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5EC3214E04B41BF392B5CE /* Budget.swift */; };
+		A5DC2FFB19B16954D8824D12 /* Subcategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850EE9F2ADEB7EE3A5AD4CB0 /* Subcategory.swift */; };
+		AB6E4DB76CBFF8B7357FCFAB /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2B63D62A9D8A179E6F51932D /* Info.plist */; };
+		B2925740AED70E7F00D91C12 /* DefaultCategorySeeder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74ACF39DE6E4B7B0C01058EA /* DefaultCategorySeeder.swift */; };
+		B4C98B40C3CE8020F1721C41 /* CategoryRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3AAEABBB98130D3DC00EF9 /* CategoryRule.swift */; };
+		B79B648BD9D3693499B383BF /* Info-macOS.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4384BA2A4529B5CA429C8966 /* Info-macOS.plist */; };
+		C5084EEC354962FFA92B1E56 /* Subcategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850EE9F2ADEB7EE3A5AD4CB0 /* Subcategory.swift */; };
+		C5A4614E91E4F1BC58204308 /* Member.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B3D1D5C161FF39B8ACE84E /* Member.swift */; };
+		CCBB71B7A37618DBC9792670 /* CodableCSV in Frameworks */ = {isa = PBXBuildFile; productRef = DE1BB1B54637B9681B6663E5 /* CodableCSV */; };
+		CD08D3AD2E698A84051452FA /* CodableCSV in Frameworks */ = {isa = PBXBuildFile; productRef = CA995321C7A380E8A0BE5DEB /* CodableCSV */; };
+		D033E902600AF21B175D2A44 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D995C260AFC9B78C0A9BF6A /* Transaction.swift */; };
+		D092792E2BC3B1E14AA30471 /* DecimalExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B9830C8DBE0D91F9560AA2 /* DecimalExtensionsTests.swift */; };
+		D1A5E2F03179177A416AFAA4 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A3FD7B2351CD5D6D0D9C96 /* Date+Extensions.swift */; };
+		D858AF70C7DB6EDCEA44D048 /* Household.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A4EA458E0CF433691AA437 /* Household.swift */; };
+		DE1CC698EA526B8BCCBE7D6D /* CoreXLSX in Frameworks */ = {isa = PBXBuildFile; productRef = CD116D949C80D021FF96D55E /* CoreXLSX */; };
+		DE987C58B1A7B22DB2CDEC89 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91D9472F943AC576395FF41 /* ContentView.swift */; };
+		EAE6DD1C374D8BFA7405C398 /* StringHashingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA37E4BB5CB271DE07967395 /* StringHashingTests.swift */; };
+		ECBB707722DA7DB861D00AED /* ModelVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = B770483A81DD82366910A35C /* ModelVersion.swift */; };
+		EE9D6F194461A45DB2478ACE /* DefaultCategorySeederTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6824318D503ABF50C5F284E /* DefaultCategorySeederTests.swift */; };
+		F5DE5BC75D3AD00A034AB421 /* String+Hashing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF19171C8B77C5B8321F5CE /* String+Hashing.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		75413D658093ED05A9672AEE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FF8973C272F3CACDA5F89552 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9D3F01C8B10B8D20D3275492;
+			remoteInfo = HomeBalance;
+		};
+		C6CD804D265C57C2EA27CE1A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FF8973C272F3CACDA5F89552 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2E093C57337C26799091AD4C;
+			remoteInfo = "HomeBalance-macOS";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		09470C4898695C5201172D7B /* HomeBalance.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HomeBalance.entitlements; sourceTree = "<group>"; };
+		21A38F0DA269E0457198BE4B /* ImportBatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportBatch.swift; sourceTree = "<group>"; };
+		2B63D62A9D8A179E6F51932D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		3B5EC3214E04B41BF392B5CE /* Budget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Budget.swift; sourceTree = "<group>"; };
+		3D995C260AFC9B78C0A9BF6A /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
+		4384BA2A4529B5CA429C8966 /* Info-macOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Info-macOS.plist"; sourceTree = "<group>"; };
+		46F79387C5DDFD6CFD350FB0 /* ImportMapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportMapping.swift; sourceTree = "<group>"; };
+		51C1577EB96BB63607E22109 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		58C1B24B308B5A24048C7065 /* HomeBalance-macOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HomeBalance-macOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		64B9830C8DBE0D91F9560AA2 /* DecimalExtensionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecimalExtensionsTests.swift; sourceTree = "<group>"; };
+		6A977B6FF75C3686E2E41E85 /* HomeBalance.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = HomeBalance.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		716FEBB43E0E67BCB3546E87 /* HomeBalanceApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBalanceApp.swift; sourceTree = "<group>"; };
+		74ACF39DE6E4B7B0C01058EA /* DefaultCategorySeeder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultCategorySeeder.swift; sourceTree = "<group>"; };
+		7AF19171C8B77C5B8321F5CE /* String+Hashing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Hashing.swift"; sourceTree = "<group>"; };
+		84D047D10BC9EFEF9B295EDC /* HomeBalanceTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = HomeBalanceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		850EE9F2ADEB7EE3A5AD4CB0 /* Subcategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subcategory.swift; sourceTree = "<group>"; };
+		95B3D1D5C161FF39B8ACE84E /* Member.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Member.swift; sourceTree = "<group>"; };
+		A1A3FD7B2351CD5D6D0D9C96 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
+		A455DDB9F527D9AC623F19FE /* Decimal+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Decimal+Extensions.swift"; sourceTree = "<group>"; };
+		A9C68D3C58BB6B05D6473C2A /* BankAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankAccount.swift; sourceTree = "<group>"; };
+		B3BE388937DB136EAEC66231 /* HomeBalanceTests-macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "HomeBalanceTests-macOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B770483A81DD82366910A35C /* ModelVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelVersion.swift; sourceTree = "<group>"; };
+		BFD94162AF426CCADB652F6B /* AppCommands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCommands.swift; sourceTree = "<group>"; };
+		C6824318D503ABF50C5F284E /* DefaultCategorySeederTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultCategorySeederTests.swift; sourceTree = "<group>"; };
+		C91D9472F943AC576395FF41 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		CA3AAEABBB98130D3DC00EF9 /* CategoryRule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryRule.swift; sourceTree = "<group>"; };
+		CA8D031496FB700147051889 /* DefaultCategories.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = DefaultCategories.json; sourceTree = "<group>"; };
+		F4A4EA458E0CF433691AA437 /* Household.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Household.swift; sourceTree = "<group>"; };
+		FA37E4BB5CB271DE07967395 /* StringHashingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringHashingTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		902039664040E94B78DD224C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD08D3AD2E698A84051452FA /* CodableCSV in Frameworks */,
+				DE1CC698EA526B8BCCBE7D6D /* CoreXLSX in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BADAB6A3B0B1D82AC782629E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CCBB71B7A37618DBC9792670 /* CodableCSV in Frameworks */,
+				221B59ABB32002C743C4C655 /* CoreXLSX in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		018831013CECB2B6EF081CD8 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A9C68D3C58BB6B05D6473C2A /* BankAccount.swift */,
+				3B5EC3214E04B41BF392B5CE /* Budget.swift */,
+				51C1577EB96BB63607E22109 /* Category.swift */,
+				CA3AAEABBB98130D3DC00EF9 /* CategoryRule.swift */,
+				F4A4EA458E0CF433691AA437 /* Household.swift */,
+				21A38F0DA269E0457198BE4B /* ImportBatch.swift */,
+				46F79387C5DDFD6CFD350FB0 /* ImportMapping.swift */,
+				95B3D1D5C161FF39B8ACE84E /* Member.swift */,
+				850EE9F2ADEB7EE3A5AD4CB0 /* Subcategory.swift */,
+				3D995C260AFC9B78C0A9BF6A /* Transaction.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		38252E79FDCBC9678902A1AE /* App */ = {
+			isa = PBXGroup;
+			children = (
+				BFD94162AF426CCADB652F6B /* AppCommands.swift */,
+				C91D9472F943AC576395FF41 /* ContentView.swift */,
+				716FEBB43E0E67BCB3546E87 /* HomeBalanceApp.swift */,
+				B770483A81DD82366910A35C /* ModelVersion.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		407B68F9A99AB34D9BC67B9E /* HomeBalance */ = {
+			isa = PBXGroup;
+			children = (
+				09470C4898695C5201172D7B /* HomeBalance.entitlements */,
+				4384BA2A4529B5CA429C8966 /* Info-macOS.plist */,
+				2B63D62A9D8A179E6F51932D /* Info.plist */,
+				38252E79FDCBC9678902A1AE /* App */,
+				018831013CECB2B6EF081CD8 /* Models */,
+				CD394632DCCFAF3873D7AFC4 /* Resources */,
+				A9B2A9CD186F3977451DB76F /* Services */,
+				8E084A1C376CFCA9D3AC52F5 /* Utilities */,
+			);
+			path = HomeBalance;
+			sourceTree = "<group>";
+		};
+		65C14AE039A48CC3E1FE1DDD /* HomeBalanceTests */ = {
+			isa = PBXGroup;
+			children = (
+				D9EEE162B2F7848FF5F2F05A /* Services */,
+				757599DEC3E61365D1A22641 /* Utilities */,
+			);
+			path = HomeBalanceTests;
+			sourceTree = "<group>";
+		};
+		757599DEC3E61365D1A22641 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				64B9830C8DBE0D91F9560AA2 /* DecimalExtensionsTests.swift */,
+				FA37E4BB5CB271DE07967395 /* StringHashingTests.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		8E084A1C376CFCA9D3AC52F5 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				A1A3FD7B2351CD5D6D0D9C96 /* Date+Extensions.swift */,
+				A455DDB9F527D9AC623F19FE /* Decimal+Extensions.swift */,
+				7AF19171C8B77C5B8321F5CE /* String+Hashing.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		A9B2A9CD186F3977451DB76F /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				74ACF39DE6E4B7B0C01058EA /* DefaultCategorySeeder.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		CD394632DCCFAF3873D7AFC4 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				CA8D031496FB700147051889 /* DefaultCategories.json */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		D05BD3077A3155D80C178C17 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				58C1B24B308B5A24048C7065 /* HomeBalance-macOS.app */,
+				6A977B6FF75C3686E2E41E85 /* HomeBalance.app */,
+				B3BE388937DB136EAEC66231 /* HomeBalanceTests-macOS.xctest */,
+				84D047D10BC9EFEF9B295EDC /* HomeBalanceTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D9EEE162B2F7848FF5F2F05A /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				C6824318D503ABF50C5F284E /* DefaultCategorySeederTests.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		DB337E42656C0EB994D8A3A4 = {
+			isa = PBXGroup;
+			children = (
+				407B68F9A99AB34D9BC67B9E /* HomeBalance */,
+				65C14AE039A48CC3E1FE1DDD /* HomeBalanceTests */,
+				D05BD3077A3155D80C178C17 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		"TEMP_6C38D590-21D4-4F24-8491-1898E7B5D12A" /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2E093C57337C26799091AD4C /* HomeBalance-macOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 92834CF6C4CFE9D52A50FF19 /* Build configuration list for PBXNativeTarget "HomeBalance-macOS" */;
+			buildPhases = (
+				14B9E7EFE31B8878E5C12E42 /* Sources */,
+				CAEE4CF1EB04345BD71AB3BB /* Resources */,
+				902039664040E94B78DD224C /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "HomeBalance-macOS";
+			packageProductDependencies = (
+				CA995321C7A380E8A0BE5DEB /* CodableCSV */,
+				CD116D949C80D021FF96D55E /* CoreXLSX */,
+			);
+			productName = "HomeBalance-macOS";
+			productReference = 58C1B24B308B5A24048C7065 /* HomeBalance-macOS.app */;
+			productType = "com.apple.product-type.application";
+		};
+		9D3F01C8B10B8D20D3275492 /* HomeBalance */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 95A73CCAD569B00DC0DE77E8 /* Build configuration list for PBXNativeTarget "HomeBalance" */;
+			buildPhases = (
+				42F79015093F41B5FB3335FB /* Sources */,
+				D75FF4924F8C40ED0620DE56 /* Resources */,
+				BADAB6A3B0B1D82AC782629E /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HomeBalance;
+			packageProductDependencies = (
+				DE1BB1B54637B9681B6663E5 /* CodableCSV */,
+				67AEF554F924D8208F77C132 /* CoreXLSX */,
+			);
+			productName = HomeBalance;
+			productReference = 6A977B6FF75C3686E2E41E85 /* HomeBalance.app */;
+			productType = "com.apple.product-type.application";
+		};
+		E283F6F90BDCA729541A1F02 /* HomeBalanceTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 63FFD45E5667C608B74E34D2 /* Build configuration list for PBXNativeTarget "HomeBalanceTests" */;
+			buildPhases = (
+				E304B1E66D67635D79496593 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DA69A9764966474D08A3ED15 /* PBXTargetDependency */,
+			);
+			name = HomeBalanceTests;
+			packageProductDependencies = (
+			);
+			productName = HomeBalanceTests;
+			productReference = 84D047D10BC9EFEF9B295EDC /* HomeBalanceTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		EEF2C913C39A25282254C6A2 /* HomeBalanceTests-macOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 312FF061ECFAB49D426F43A1 /* Build configuration list for PBXNativeTarget "HomeBalanceTests-macOS" */;
+			buildPhases = (
+				BFE187FCC2DC5B9A24DD752D /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DAD97F1FFABD2100AB52D5F1 /* PBXTargetDependency */,
+			);
+			name = "HomeBalanceTests-macOS";
+			packageProductDependencies = (
+			);
+			productName = "HomeBalanceTests-macOS";
+			productReference = B3BE388937DB136EAEC66231 /* HomeBalanceTests-macOS.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FF8973C272F3CACDA5F89552 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+				};
+			};
+			buildConfigurationList = 6F81CE2A290A9B43DE28E1B7 /* Build configuration list for PBXProject "HomeBalance" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = DB337E42656C0EB994D8A3A4;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				051E4698316838656AA1DEB2 /* XCRemoteSwiftPackageReference "CodableCSV" */,
+				29BB9CFA7B26927E73D275AC /* XCRemoteSwiftPackageReference "CoreXLSX" */,
+			);
+			preferredProjectObjectVersion = 54;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9D3F01C8B10B8D20D3275492 /* HomeBalance */,
+				2E093C57337C26799091AD4C /* HomeBalance-macOS */,
+				E283F6F90BDCA729541A1F02 /* HomeBalanceTests */,
+				EEF2C913C39A25282254C6A2 /* HomeBalanceTests-macOS */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CAEE4CF1EB04345BD71AB3BB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				96CF574FD0BBBD918DEB65AB /* DefaultCategories.json in Resources */,
+				AB6E4DB76CBFF8B7357FCFAB /* Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D75FF4924F8C40ED0620DE56 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				18BF680066085CF320BD2217 /* DefaultCategories.json in Resources */,
+				B79B648BD9D3693499B383BF /* Info-macOS.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		14B9E7EFE31B8878E5C12E42 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				77003980846722621CFA237D /* AppCommands.swift in Sources */,
+				70D367167FA5764F9A428579 /* BankAccount.swift in Sources */,
+				9D26178687D901B1B854909C /* Budget.swift in Sources */,
+				618405B37A81E5B569945C0F /* Category.swift in Sources */,
+				B4C98B40C3CE8020F1721C41 /* CategoryRule.swift in Sources */,
+				74F65FA9E5B55CF2F008F257 /* ContentView.swift in Sources */,
+				D1A5E2F03179177A416AFAA4 /* Date+Extensions.swift in Sources */,
+				20D065D331B242A94A0B01C9 /* Decimal+Extensions.swift in Sources */,
+				B2925740AED70E7F00D91C12 /* DefaultCategorySeeder.swift in Sources */,
+				495271ADF0C710B47620C5F3 /* HomeBalanceApp.swift in Sources */,
+				4F5A89F8925EFF8183C5D6AD /* Household.swift in Sources */,
+				7EB5761AD1A42A46712446F3 /* ImportBatch.swift in Sources */,
+				71927CB5327C9874A13080C8 /* ImportMapping.swift in Sources */,
+				83AB7B40A8649E28A2FCDF84 /* Member.swift in Sources */,
+				ECBB707722DA7DB861D00AED /* ModelVersion.swift in Sources */,
+				F5DE5BC75D3AD00A034AB421 /* String+Hashing.swift in Sources */,
+				A5DC2FFB19B16954D8824D12 /* Subcategory.swift in Sources */,
+				D033E902600AF21B175D2A44 /* Transaction.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		42F79015093F41B5FB3335FB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6F4A75D19CBB4320CDD9B14E /* AppCommands.swift in Sources */,
+				96DA27892427E465760AF35C /* BankAccount.swift in Sources */,
+				27A4C620B3B62F2B347F06C8 /* Budget.swift in Sources */,
+				2DDC3212C52A1BA7E1FC45D9 /* Category.swift in Sources */,
+				34673A3A9750ADF3C863511F /* CategoryRule.swift in Sources */,
+				DE987C58B1A7B22DB2CDEC89 /* ContentView.swift in Sources */,
+				40F33D65066D5DA8892E39CF /* Date+Extensions.swift in Sources */,
+				3113D4DC4359665D889DD666 /* Decimal+Extensions.swift in Sources */,
+				95A71A7C85E1A0295BC2A568 /* DefaultCategorySeeder.swift in Sources */,
+				72388168BC562A7D8490A6F0 /* HomeBalanceApp.swift in Sources */,
+				D858AF70C7DB6EDCEA44D048 /* Household.swift in Sources */,
+				31B95B07A7AD2641C5C28629 /* ImportBatch.swift in Sources */,
+				0E0BAB2D67E315AA1EBBDEB6 /* ImportMapping.swift in Sources */,
+				C5A4614E91E4F1BC58204308 /* Member.swift in Sources */,
+				0B8F882CF5A97EE46EE86FAE /* ModelVersion.swift in Sources */,
+				1A705ED45E95945A29287C41 /* String+Hashing.swift in Sources */,
+				C5084EEC354962FFA92B1E56 /* Subcategory.swift in Sources */,
+				794DA36D9B9F130FF85128BA /* Transaction.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BFE187FCC2DC5B9A24DD752D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				627828D330A2FCF9086742C2 /* DecimalExtensionsTests.swift in Sources */,
+				EE9D6F194461A45DB2478ACE /* DefaultCategorySeederTests.swift in Sources */,
+				51D93268F9CA0736516F827F /* StringHashingTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E304B1E66D67635D79496593 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D092792E2BC3B1E14AA30471 /* DecimalExtensionsTests.swift in Sources */,
+				306557840672611FD991195D /* DefaultCategorySeederTests.swift in Sources */,
+				EAE6DD1C374D8BFA7405C398 /* StringHashingTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		DA69A9764966474D08A3ED15 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9D3F01C8B10B8D20D3275492 /* HomeBalance */;
+			targetProxy = 75413D658093ED05A9672AEE /* PBXContainerItemProxy */;
+		};
+		DAD97F1FFABD2100AB52D5F1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2E093C57337C26799091AD4C /* HomeBalance-macOS */;
+			targetProxy = C6CD804D265C57C2EA27CE1A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		050FBAEF4AEC2F516FF5824C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.homebalance.tests.macos;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 6.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HomeBalance.app/Contents/MacOS/HomeBalance";
+			};
+			name = Debug;
+		};
+		1F7088E1CF785BE8D39654A7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		5B2C26937F23B99660CAFB08 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = HomeBalance/HomeBalance.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = HomeBalance/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.homebalance.app;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		605E03F9651BD42A039CB54B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		643223E666722D02B8571268 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.homebalance.tests;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HomeBalance.app/HomeBalance";
+			};
+			name = Release;
+		};
+		66816024D2201E3E45D3ED24 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = HomeBalance/HomeBalance.entitlements;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = "HomeBalance/Info-macOS.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.homebalance.app.macos;
+				PRODUCT_NAME = HomeBalance;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6.0;
+			};
+			name = Debug;
+		};
+		99CC7280550034C81AF2509B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.homebalance.tests.macos;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 6.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HomeBalance.app/Contents/MacOS/HomeBalance";
+			};
+			name = Release;
+		};
+		9A80FAAE203B2B186CA5C037 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = HomeBalance/HomeBalance.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = HomeBalance/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.homebalance.app;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C24DD442B87B7F265353E677 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.homebalance.tests;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HomeBalance.app/HomeBalance";
+			};
+			name = Debug;
+		};
+		E54F9BFACE478FD362E84145 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = HomeBalance/HomeBalance.entitlements;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = "HomeBalance/Info-macOS.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.homebalance.app.macos;
+				PRODUCT_NAME = HomeBalance;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		312FF061ECFAB49D426F43A1 /* Build configuration list for PBXNativeTarget "HomeBalanceTests-macOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				050FBAEF4AEC2F516FF5824C /* Debug */,
+				99CC7280550034C81AF2509B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		63FFD45E5667C608B74E34D2 /* Build configuration list for PBXNativeTarget "HomeBalanceTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C24DD442B87B7F265353E677 /* Debug */,
+				643223E666722D02B8571268 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		6F81CE2A290A9B43DE28E1B7 /* Build configuration list for PBXProject "HomeBalance" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				605E03F9651BD42A039CB54B /* Debug */,
+				1F7088E1CF785BE8D39654A7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		92834CF6C4CFE9D52A50FF19 /* Build configuration list for PBXNativeTarget "HomeBalance-macOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				66816024D2201E3E45D3ED24 /* Debug */,
+				E54F9BFACE478FD362E84145 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		95A73CCAD569B00DC0DE77E8 /* Build configuration list for PBXNativeTarget "HomeBalance" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9A80FAAE203B2B186CA5C037 /* Debug */,
+				5B2C26937F23B99660CAFB08 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		051E4698316838656AA1DEB2 /* XCRemoteSwiftPackageReference "CodableCSV" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/dehesa/CodableCSV";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.6.7;
+			};
+		};
+		29BB9CFA7B26927E73D275AC /* XCRemoteSwiftPackageReference "CoreXLSX" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/CoreOffice/CoreXLSX";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.14.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		67AEF554F924D8208F77C132 /* CoreXLSX */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 29BB9CFA7B26927E73D275AC /* XCRemoteSwiftPackageReference "CoreXLSX" */;
+			productName = CoreXLSX;
+		};
+		CA995321C7A380E8A0BE5DEB /* CodableCSV */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 051E4698316838656AA1DEB2 /* XCRemoteSwiftPackageReference "CodableCSV" */;
+			productName = CodableCSV;
+		};
+		CD116D949C80D021FF96D55E /* CoreXLSX */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 29BB9CFA7B26927E73D275AC /* XCRemoteSwiftPackageReference "CoreXLSX" */;
+			productName = CoreXLSX;
+		};
+		DE1BB1B54637B9681B6663E5 /* CodableCSV */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 051E4698316838656AA1DEB2 /* XCRemoteSwiftPackageReference "CodableCSV" */;
+			productName = CodableCSV;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = FF8973C272F3CACDA5F89552 /* Project object */;
+}

@@ -1,0 +1,201 @@
+[
+  {
+    "name": "Vivienda",
+    "nameEN": "Housing",
+    "icon": "house.fill",
+    "color": "#5856D6",
+    "type": "expense",
+    "sortOrder": 10,
+    "subcategories": [
+      { "name": "Alquiler / Hipoteca", "nameEN": "Rent / Mortgage", "sortOrder": 10 },
+      { "name": "Suministros (Luz, Gas, Agua)", "nameEN": "Utilities", "sortOrder": 20 },
+      { "name": "Comunidad", "nameEN": "HOA / Community fees", "sortOrder": 30 },
+      { "name": "Seguro Hogar", "nameEN": "Home Insurance", "sortOrder": 40 },
+      { "name": "Mantenimiento y Reparaciones", "nameEN": "Maintenance & Repairs", "sortOrder": 50 },
+      { "name": "Mobiliario y Equipamiento", "nameEN": "Furniture & Equipment", "sortOrder": 60 }
+    ]
+  },
+  {
+    "name": "Alimentación",
+    "nameEN": "Food & Groceries",
+    "icon": "cart.fill",
+    "color": "#34C759",
+    "type": "expense",
+    "sortOrder": 20,
+    "subcategories": [
+      { "name": "Supermercado", "nameEN": "Supermarket", "sortOrder": 10 },
+      { "name": "Mercado / Carnicería / Frutería", "nameEN": "Market / Butcher / Greengrocer", "sortOrder": 20 },
+      { "name": "Restaurantes y Bares", "nameEN": "Restaurants & Bars", "sortOrder": 30 },
+      { "name": "Comida a Domicilio", "nameEN": "Food Delivery", "sortOrder": 40 },
+      { "name": "Cafetería", "nameEN": "Coffee shop", "sortOrder": 50 }
+    ]
+  },
+  {
+    "name": "Transporte",
+    "nameEN": "Transport",
+    "icon": "car.fill",
+    "color": "#FF9500",
+    "type": "expense",
+    "sortOrder": 30,
+    "subcategories": [
+      { "name": "Combustible", "nameEN": "Fuel", "sortOrder": 10 },
+      { "name": "Transporte Público", "nameEN": "Public Transport", "sortOrder": 20 },
+      { "name": "Taxi / VTC", "nameEN": "Taxi / Rideshare", "sortOrder": 30 },
+      { "name": "Seguro Vehículo", "nameEN": "Vehicle Insurance", "sortOrder": 40 },
+      { "name": "Mantenimiento Vehículo", "nameEN": "Vehicle Maintenance", "sortOrder": 50 },
+      { "name": "Parking y Peajes", "nameEN": "Parking & Tolls", "sortOrder": 60 },
+      { "name": "Multas", "nameEN": "Fines", "sortOrder": 70 }
+    ]
+  },
+  {
+    "name": "Salud",
+    "nameEN": "Health",
+    "icon": "heart.fill",
+    "color": "#FF2D55",
+    "type": "expense",
+    "sortOrder": 40,
+    "subcategories": [
+      { "name": "Médico / Consultas", "nameEN": "Doctor / Consultations", "sortOrder": 10 },
+      { "name": "Farmacia", "nameEN": "Pharmacy", "sortOrder": 20 },
+      { "name": "Seguro Médico", "nameEN": "Health Insurance", "sortOrder": 30 },
+      { "name": "Dentista", "nameEN": "Dentist", "sortOrder": 40 },
+      { "name": "Óptica", "nameEN": "Optician", "sortOrder": 50 },
+      { "name": "Gimnasio / Deporte", "nameEN": "Gym / Sport", "sortOrder": 60 }
+    ]
+  },
+  {
+    "name": "Ocio y Entretenimiento",
+    "nameEN": "Leisure & Entertainment",
+    "icon": "gamecontroller.fill",
+    "color": "#AF52DE",
+    "type": "expense",
+    "sortOrder": 50,
+    "subcategories": [
+      { "name": "Suscripciones (Netflix, Spotify…)", "nameEN": "Subscriptions", "sortOrder": 10 },
+      { "name": "Cine / Teatro / Eventos", "nameEN": "Cinema / Theatre / Events", "sortOrder": 20 },
+      { "name": "Viajes y Vacaciones", "nameEN": "Travel & Holidays", "sortOrder": 30 },
+      { "name": "Libros y Revistas", "nameEN": "Books & Magazines", "sortOrder": 40 },
+      { "name": "Videojuegos", "nameEN": "Video Games", "sortOrder": 50 },
+      { "name": "Hobbies", "nameEN": "Hobbies", "sortOrder": 60 }
+    ]
+  },
+  {
+    "name": "Ropa y Personal",
+    "nameEN": "Clothing & Personal",
+    "icon": "tshirt.fill",
+    "color": "#FF6B6B",
+    "type": "expense",
+    "sortOrder": 60,
+    "subcategories": [
+      { "name": "Ropa y Calzado", "nameEN": "Clothing & Footwear", "sortOrder": 10 },
+      { "name": "Peluquería y Estética", "nameEN": "Hairdresser & Beauty", "sortOrder": 20 },
+      { "name": "Higiene y Cosmética", "nameEN": "Hygiene & Cosmetics", "sortOrder": 30 }
+    ]
+  },
+  {
+    "name": "Educación",
+    "nameEN": "Education",
+    "icon": "graduationcap.fill",
+    "color": "#007AFF",
+    "type": "expense",
+    "sortOrder": 70,
+    "subcategories": [
+      { "name": "Colegio / Universidad", "nameEN": "School / University", "sortOrder": 10 },
+      { "name": "Extraescolares", "nameEN": "Extracurricular Activities", "sortOrder": 20 },
+      { "name": "Libros y Material", "nameEN": "Books & Supplies", "sortOrder": 30 },
+      { "name": "Cursos y Formación", "nameEN": "Courses & Training", "sortOrder": 40 }
+    ]
+  },
+  {
+    "name": "Tecnología",
+    "nameEN": "Technology",
+    "icon": "laptopcomputer",
+    "color": "#636366",
+    "type": "expense",
+    "sortOrder": 80,
+    "subcategories": [
+      { "name": "Dispositivos y Electrónica", "nameEN": "Devices & Electronics", "sortOrder": 10 },
+      { "name": "Software y Apps", "nameEN": "Software & Apps", "sortOrder": 20 },
+      { "name": "Telecomunicaciones", "nameEN": "Telecoms (Phone / Internet)", "sortOrder": 30 }
+    ]
+  },
+  {
+    "name": "Mascotas",
+    "nameEN": "Pets",
+    "icon": "pawprint.fill",
+    "color": "#A2845E",
+    "type": "expense",
+    "sortOrder": 90,
+    "subcategories": [
+      { "name": "Comida y Accesorios", "nameEN": "Food & Accessories", "sortOrder": 10 },
+      { "name": "Veterinario", "nameEN": "Vet", "sortOrder": 20 },
+      { "name": "Seguro Mascota", "nameEN": "Pet Insurance", "sortOrder": 30 }
+    ]
+  },
+  {
+    "name": "Finanzas e Impuestos",
+    "nameEN": "Finance & Taxes",
+    "icon": "building.columns.fill",
+    "color": "#8E8E93",
+    "type": "expense",
+    "sortOrder": 100,
+    "subcategories": [
+      { "name": "Impuestos", "nameEN": "Taxes", "sortOrder": 10 },
+      { "name": "Seguros (vida, incapacidad)", "nameEN": "Insurance (life, disability)", "sortOrder": 20 },
+      { "name": "Comisiones Bancarias", "nameEN": "Bank Fees", "sortOrder": 30 },
+      { "name": "Intereses de Deuda", "nameEN": "Debt Interest", "sortOrder": 40 }
+    ]
+  },
+  {
+    "name": "Ahorro e Inversión",
+    "nameEN": "Savings & Investment",
+    "icon": "chart.line.uptrend.xyaxis",
+    "color": "#30D158",
+    "type": "expense",
+    "sortOrder": 110,
+    "subcategories": [
+      { "name": "Fondo de Emergencia", "nameEN": "Emergency Fund", "sortOrder": 10 },
+      { "name": "Plan de Pensiones", "nameEN": "Pension Plan", "sortOrder": 20 },
+      { "name": "Inversiones", "nameEN": "Investments", "sortOrder": 30 },
+      { "name": "Ahorro Específico", "nameEN": "Specific Savings Goal", "sortOrder": 40 }
+    ]
+  },
+  {
+    "name": "Otros Gastos",
+    "nameEN": "Other Expenses",
+    "icon": "ellipsis.circle.fill",
+    "color": "#C7C7CC",
+    "type": "expense",
+    "sortOrder": 120,
+    "subcategories": [
+      { "name": "Regalos y Donaciones", "nameEN": "Gifts & Donations", "sortOrder": 10 },
+      { "name": "Sin Categorizar", "nameEN": "Uncategorized", "sortOrder": 20 }
+    ]
+  },
+  {
+    "name": "Ingresos",
+    "nameEN": "Income",
+    "icon": "arrow.down.circle.fill",
+    "color": "#00C7BE",
+    "type": "income",
+    "sortOrder": 130,
+    "subcategories": [
+      { "name": "Salario", "nameEN": "Salary", "sortOrder": 10 },
+      { "name": "Autónomo / Freelance", "nameEN": "Self-employed / Freelance", "sortOrder": 20 },
+      { "name": "Rendimientos de Inversión", "nameEN": "Investment Returns", "sortOrder": 30 },
+      { "name": "Alquiler Recibido", "nameEN": "Rental Income", "sortOrder": 40 },
+      { "name": "Prestaciones y Ayudas", "nameEN": "Benefits & Grants", "sortOrder": 50 },
+      { "name": "Otros Ingresos", "nameEN": "Other Income", "sortOrder": 60 }
+    ]
+  },
+  {
+    "name": "Transferencia Interna",
+    "nameEN": "Internal Transfer",
+    "icon": "arrow.left.arrow.right.circle.fill",
+    "color": "#636366",
+    "type": "transfer",
+    "sortOrder": 999,
+    "isSystem": true,
+    "subcategories": []
+  }
+]
