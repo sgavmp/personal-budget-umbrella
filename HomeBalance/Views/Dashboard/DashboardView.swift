@@ -1,7 +1,8 @@
 import SwiftUI
 import SwiftData
 
-/// Main dashboard screen: shows monthly summary, category breakdown, recent transactions.
+/// Main dashboard screen following "The Financial Curator" design system.
+/// Shows a hero summary card, spending-by-category breakdown, and recent activity.
 struct DashboardView: View {
     let household: Household
 
@@ -11,24 +12,28 @@ struct DashboardView: View {
 
     var body: some View {
         ScrollView {
-            VStack(spacing: 16) {
+            VStack(spacing: HBSpacing.lg) {
                 // Month navigator
                 monthNavigator
+                    .padding(.horizontal, HBSpacing.lg)
 
-                // Summary card
+                // Hero summary card  ── or loading / empty states
                 if let summary = viewModel.summary {
                     BudgetSummaryCard(summary: summary, currency: household.currency)
-                        .padding(.horizontal)
+                        .padding(.horizontal, HBSpacing.lg)
                 } else if viewModel.isLoading {
                     ProgressView()
-                        .padding(.top, 32)
+                        .frame(maxWidth: .infinity)
+                        .padding(.top, HBSpacing.xl)
                 } else {
-                    emptyMonthView
+                    emptyMonthCard
+                        .padding(.horizontal, HBSpacing.lg)
                 }
 
                 // Category breakdown
                 if let summary = viewModel.summary, !summary.categoryBreakdown.isEmpty {
-                    categoryBreakdownCard(summary: summary)
+                    categoryBreakdownSection(summary: summary)
+                        .padding(.horizontal, HBSpacing.lg)
                 }
 
                 // Recent transactions
@@ -37,11 +42,12 @@ struct DashboardView: View {
                     currency: household.currency,
                     onViewAll: { showingTransactions = true }
                 )
-                .padding(.horizontal)
-                .padding(.bottom, 8)
+                .padding(.horizontal, HBSpacing.lg)
+                .padding(.bottom, HBSpacing.md)
             }
-            .padding(.vertical, 8)
+            .padding(.top, HBSpacing.md)
         }
+        .background(Color.hbSurface.ignoresSafeArea())
         .navigationTitle("dashboard")
         .onAppear { viewModel.loadData(for: household, context: modelContext) }
         .onChange(of: viewModel.selectedDate) { _, _ in
@@ -59,17 +65,21 @@ struct DashboardView: View {
         }
     }
 
-    // MARK: - Sub-views
+    // MARK: - Month navigator
 
     private var monthNavigator: some View {
-        HStack {
+        HStack(spacing: 0) {
             Button {
                 viewModel.goToPreviousMonth()
             } label: {
                 Image(systemName: "chevron.left")
-                    .imageScale(.medium)
-                    .frame(width: 36, height: 36)
+                    .font(.system(size: 16, weight: .semibold))
+                    .frame(width: 40, height: 40)
+                    .background(Color.white)
+                    .clipShape(Circle())
+                    .hbSubtleShadow()
             }
+            .buttonStyle(.plain)
 
             Spacer()
 
@@ -77,7 +87,8 @@ struct DashboardView: View {
                 viewModel.goToCurrentMonth()
             } label: {
                 Text(viewModel.displayMonth)
-                    .font(.headline)
+                    .font(.hbHeadlineMedium)
+                    .foregroundStyle(.hbOnSurface)
             }
             .buttonStyle(.plain)
 
@@ -87,95 +98,115 @@ struct DashboardView: View {
                 viewModel.goToNextMonth()
             } label: {
                 Image(systemName: "chevron.right")
-                    .imageScale(.medium)
-                    .frame(width: 36, height: 36)
+                    .font(.system(size: 16, weight: .semibold))
+                    .frame(width: 40, height: 40)
+                    .background(Color.white)
+                    .clipShape(Circle())
+                    .hbSubtleShadow()
             }
+            .buttonStyle(.plain)
             .disabled(!viewModel.canGoForward)
             .opacity(viewModel.canGoForward ? 1 : 0.3)
         }
-        .padding(.horizontal, 24)
     }
 
-    private var emptyMonthView: some View {
-        EmptyStateView(
-            icon: "calendar.badge.clock",
-            title: "no_data_this_month",
-            subtitle: "add_first_transaction"
-        )
-        .frame(height: 200)
-    }
+    // MARK: - Empty month
 
-    @ViewBuilder
-    private func categoryBreakdownCard(summary: MonthlySummary) -> some View {
-        VStack(alignment: .leading, spacing: 0) {
-            Text("spending_by_category")
-                .font(.headline)
-                .padding(.horizontal, 16)
-                .padding(.vertical, 12)
+    private var emptyMonthCard: some View {
+        VStack(spacing: HBSpacing.md) {
+            Image(systemName: "calendar.badge.clock")
+                .font(.system(size: 40))
+                .foregroundStyle(.hbPrimary.opacity(0.6))
 
-            Divider()
-
-            ForEach(Array(summary.categoryBreakdown.prefix(5).enumerated()), id: \.offset) { index, item in
-                categoryRow(
-                    category: item.category,
-                    amount: item.amount,
-                    total: summary.totalExpenses,
-                    currency: household.currency
-                )
-                if index < min(4, summary.categoryBreakdown.count - 1) {
-                    Divider().padding(.leading, 52)
-                }
+            VStack(spacing: HBSpacing.xs) {
+                Text("no_data_this_month")
+                    .font(.hbHeadlineMedium)
+                    .foregroundStyle(.hbOnSurface)
+                Text("add_first_transaction")
+                    .font(.subheadline)
+                    .foregroundStyle(.hbOnSurfaceVariant)
+                    .multilineTextAlignment(.center)
             }
         }
-        .background(.background)
-        .clipShape(RoundedRectangle(cornerRadius: 12))
-        .shadow(color: .black.opacity(0.06), radius: 6, x: 0, y: 2)
-        .padding(.horizontal)
+        .frame(maxWidth: .infinity)
+        .padding(.vertical, HBSpacing.xxl)
+        .hbCard()
+    }
+
+    // MARK: - Category breakdown
+
+    @ViewBuilder
+    private func categoryBreakdownSection(summary: MonthlySummary) -> some View {
+        VStack(alignment: .leading, spacing: HBSpacing.md) {
+            // Section title
+            Text("spending_by_category")
+                .font(.hbHeadlineMedium)
+                .foregroundStyle(.hbOnSurface)
+
+            VStack(spacing: HBSpacing.sm) {
+                ForEach(
+                    Array(summary.categoryBreakdown.prefix(5).enumerated()),
+                    id: \.offset
+                ) { _, item in
+                    categoryRow(
+                        category: item.category,
+                        amount: item.amount,
+                        total: summary.totalExpenses
+                    )
+                }
+            }
+            .padding(HBSpacing.md)
+            .hbCard()
+        }
     }
 
     @ViewBuilder
     private func categoryRow(
         category: Category,
         amount: Decimal,
-        total: Decimal,
-        currency: String
+        total: Decimal
     ) -> some View {
-        let fraction = total > 0 ? Double(truncating: (amount / total) as NSDecimalNumber) : 0
+        let fraction = total > 0
+            ? Double(truncating: (amount / total) as NSDecimalNumber)
+            : 0
         let color = Color(hex: category.color)
 
-        HStack(spacing: 12) {
+        HStack(spacing: HBSpacing.md) {
+            // Icon badge
             ZStack {
                 Circle()
                     .fill(color.opacity(0.15))
-                    .frame(width: 36, height: 36)
+                    .frame(width: 40, height: 40)
                 Image(systemName: category.icon)
-                    .font(.system(size: 16))
+                    .font(.system(size: 17))
                     .foregroundStyle(color)
             }
 
-            VStack(alignment: .leading, spacing: 4) {
+            // Label + bar
+            VStack(alignment: .leading, spacing: HBSpacing.xs) {
                 HStack {
                     Text(category.name)
                         .font(.subheadline)
+                        .foregroundStyle(.hbOnSurface)
                     Spacer()
-                    Text(amount.formatted(currency: currency))
+                    Text(amount.formatted(currency: household.currency))
                         .font(.subheadline.weight(.semibold))
+                        .foregroundStyle(.hbOnSurface)
                 }
+
+                // Progress bar
                 GeometryReader { geo in
                     ZStack(alignment: .leading) {
-                        RoundedRectangle(cornerRadius: 3)
-                            .fill(Color.secondary.opacity(0.15))
-                        RoundedRectangle(cornerRadius: 3)
-                            .fill(color)
+                        RoundedRectangle(cornerRadius: HBRadius.progressBar)
+                            .fill(Color.hbSurfaceVariant)
+                        RoundedRectangle(cornerRadius: HBRadius.progressBar)
+                            .fill(.hbSecondary)
                             .frame(width: geo.size.width * fraction)
                     }
-                    .frame(height: 6)
+                    .frame(height: 8)
                 }
-                .frame(height: 6)
+                .frame(height: 8)
             }
         }
-        .padding(.horizontal, 16)
-        .padding(.vertical, 10)
     }
 }
-

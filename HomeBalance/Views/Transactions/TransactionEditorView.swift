@@ -2,6 +2,7 @@ import SwiftUI
 import SwiftData
 
 /// Form to create or edit a Transaction.
+/// Design: "The Financial Curator" — styled toolbar buttons, hbSurface background.
 struct TransactionEditorView: View {
     let household: Household
     var editingTransaction: Transaction?
@@ -28,6 +29,7 @@ struct TransactionEditorView: View {
                     }
                     .pickerStyle(.segmented)
                 }
+                .listRowBackground(Color.hbSurfaceLow)
 
                 // Amount + Description
                 Section("details") {
@@ -36,6 +38,13 @@ struct TransactionEditorView: View {
                         text: $viewModel.amountString,
                         currency: household.currency
                     )
+                    .listRowInsets(EdgeInsets(
+                        top: HBSpacing.sm,
+                        leading: HBSpacing.md,
+                        bottom: HBSpacing.sm,
+                        trailing: HBSpacing.md
+                    ))
+
                     TextField("description", text: $viewModel.descriptionText)
                     DatePicker("date", selection: $viewModel.date, displayedComponents: .date)
                 }
@@ -69,6 +78,8 @@ struct TransactionEditorView: View {
                         .lineLimit(3...)
                 }
             }
+            .scrollContentBackground(.hidden)
+            .background(Color.hbSurface)
             .navigationTitle(viewModel.isEditing ? "edit_transaction" : "new_transaction")
             #if os(iOS)
             .navigationBarTitleDisplayMode(.inline)
@@ -78,10 +89,13 @@ struct TransactionEditorView: View {
                     Button("save") {
                         viewModel.save(in: modelContext)
                     }
+                    .fontWeight(.semibold)
+                    .foregroundStyle(.hbPrimary)
                     .disabled(!viewModel.isValid || viewModel.isSaving)
                 }
                 ToolbarItem(placement: .cancellationAction) {
                     Button("cancel") { dismiss() }
+                        .foregroundStyle(.hbOnSurfaceVariant)
                 }
             }
             .onChange(of: viewModel.didSave) { _, saved in

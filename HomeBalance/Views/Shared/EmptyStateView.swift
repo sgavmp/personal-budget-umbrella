@@ -1,6 +1,7 @@
 import SwiftUI
 
 /// Generic empty-state illustration used across list screens.
+/// Design: "The Financial Curator" — subtle icon, primary-blue CTA button.
 struct EmptyStateView: View {
     let icon: String
     let title: LocalizedStringKey
@@ -23,30 +24,45 @@ struct EmptyStateView: View {
     }
 
     var body: some View {
-        VStack(spacing: 16) {
-            Image(systemName: icon)
-                .font(.system(size: 52))
-                .foregroundStyle(.secondary)
-                .padding(.bottom, 4)
+        VStack(spacing: HBSpacing.md) {
+            // Tinted icon circle
+            ZStack {
+                Circle()
+                    .fill(Color.hbPrimaryContainer)
+                    .frame(width: 88, height: 88)
+                Image(systemName: icon)
+                    .font(.system(size: 38))
+                    .foregroundStyle(.hbPrimary)
+            }
+            .padding(.bottom, HBSpacing.xs)
 
             Text(title)
-                .font(.headline)
+                .font(.hbHeadlineMedium)
+                .foregroundStyle(.hbOnSurface)
                 .multilineTextAlignment(.center)
 
             if let subtitle {
                 Text(subtitle)
                     .font(.subheadline)
-                    .foregroundStyle(.secondary)
+                    .foregroundStyle(.hbOnSurfaceVariant)
                     .multilineTextAlignment(.center)
             }
 
             if let actionTitle, let action {
-                Button(actionTitle, action: action)
-                    .buttonStyle(.borderedProminent)
-                    .padding(.top, 4)
+                Button(action: action) {
+                    Text(actionTitle)
+                        .font(.hbLabelLarge)
+                        .foregroundStyle(.white)
+                        .padding(.horizontal, HBSpacing.xl)
+                        .padding(.vertical, HBSpacing.sm + 2)
+                        .background(LinearGradient.hbPrimaryGradient)
+                        .clipShape(Capsule())
+                }
+                .buttonStyle(.plain)
+                .padding(.top, HBSpacing.xs)
             }
         }
-        .padding(32)
+        .padding(HBSpacing.xl)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 }

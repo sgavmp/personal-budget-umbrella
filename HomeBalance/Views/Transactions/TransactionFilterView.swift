@@ -1,6 +1,7 @@
 import SwiftUI
 
 /// Sheet showing all filter options for the transaction list.
+/// Design: "The Financial Curator" — hbSurface background, primary-blue confirms.
 struct TransactionFilterView: View {
     @Binding var viewModel: TransactionListViewModel
     let household: Household
@@ -39,6 +40,7 @@ struct TransactionFilterView: View {
 
                 Section {
                     Toggle("show_transfers", isOn: $viewModel.showTransfers)
+                        .tint(.hbPrimary)
                 }
 
                 Section {
@@ -47,6 +49,8 @@ struct TransactionFilterView: View {
                     }
                 }
             }
+            .scrollContentBackground(.hidden)
+            .background(Color.hbSurface)
             .navigationTitle("filters")
             #if os(iOS)
             .navigationBarTitleDisplayMode(.inline)
@@ -57,9 +61,12 @@ struct TransactionFilterView: View {
                         onApply()
                         dismiss()
                     }
+                    .fontWeight(.semibold)
+                    .foregroundStyle(.hbPrimary)
                 }
                 ToolbarItem(placement: .cancellationAction) {
                     Button("cancel") { dismiss() }
+                        .foregroundStyle(.hbOnSurfaceVariant)
                 }
             }
         }

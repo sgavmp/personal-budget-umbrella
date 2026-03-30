@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 54;
+	objectVersion = 77;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -30,6 +30,7 @@
 		3D1EC7F4EADF86E9D3950D72 /* DashboardViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F84CBDB118DFC9541D888BA1 /* DashboardViewModelTests.swift */; };
 		3DA5AA7F15C9256087602465 /* CategoryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127132FAFC7B2B85D58028D3 /* CategoryRepository.swift */; };
 		40F33D65066D5DA8892E39CF /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A3FD7B2351CD5D6D0D9C96 /* Date+Extensions.swift */; };
+		43B23308DB55A2C8D4CB2828 /* DesignTokens.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F32B8D6FFEF0D1715C905C2 /* DesignTokens.swift */; };
 		495271ADF0C710B47620C5F3 /* HomeBalanceApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716FEBB43E0E67BCB3546E87 /* HomeBalanceApp.swift */; };
 		4BC6AA40A50BF58C4C8A9CFE /* TransactionRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2E9A03FF5E0641FC64641A /* TransactionRepositoryTests.swift */; };
 		4F5A89F8925EFF8183C5D6AD /* Household.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A4EA458E0CF433691AA437 /* Household.swift */; };
@@ -87,6 +88,7 @@
 		D092792E2BC3B1E14AA30471 /* DecimalExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B9830C8DBE0D91F9560AA2 /* DecimalExtensionsTests.swift */; };
 		D1A5E2F03179177A416AFAA4 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A3FD7B2351CD5D6D0D9C96 /* Date+Extensions.swift */; };
 		D220D55FEA9E9A7919ECFB7D /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC4183E69110633F3F39A55 /* DashboardView.swift */; };
+		D4E8BBE2B8ECD795AED0D4F4 /* DesignTokens.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F32B8D6FFEF0D1715C905C2 /* DesignTokens.swift */; };
 		D858AF70C7DB6EDCEA44D048 /* Household.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A4EA458E0CF433691AA437 /* Household.swift */; };
 		D8BB3FB490587D8F4EC9820B /* TransactionFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9CE3D090E41111FA5A45F50 /* TransactionFilterView.swift */; };
 		DE1CC698EA526B8BCCBE7D6D /* CoreXLSX in Frameworks */ = {isa = PBXBuildFile; productRef = CD116D949C80D021FF96D55E /* CoreXLSX */; };
@@ -131,6 +133,7 @@
 		43A137DEB3807A7743B91BBC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		46F79387C5DDFD6CFD350FB0 /* ImportMapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportMapping.swift; sourceTree = "<group>"; };
 		4EB17A4E6F9CBD6247DE564E /* TransactionRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionRowView.swift; sourceTree = "<group>"; };
+		4F32B8D6FFEF0D1715C905C2 /* DesignTokens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignTokens.swift; sourceTree = "<group>"; };
 		51C1577EB96BB63607E22109 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		53AF40A031A64DAE061FB45D /* TransactionEditorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionEditorViewModel.swift; sourceTree = "<group>"; };
 		58C1B24B308B5A24048C7065 /* HomeBalance-macOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HomeBalance-macOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -308,6 +311,7 @@
 				AA74A4FC41DBDD8C424A7E74 /* Color+Extensions.swift */,
 				A1A3FD7B2351CD5D6D0D9C96 /* Date+Extensions.swift */,
 				A455DDB9F527D9AC623F19FE /* Decimal+Extensions.swift */,
+				4F32B8D6FFEF0D1715C905C2 /* DesignTokens.swift */,
 				7AF19171C8B77C5B8321F5CE /* String+Hashing.swift */,
 			);
 			path = Utilities;
@@ -488,7 +492,6 @@
 				};
 			};
 			buildConfigurationList = 6F81CE2A290A9B43DE28E1B7 /* Build configuration list for PBXProject "HomeBalance" */;
-			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -501,7 +504,8 @@
 				051E4698316838656AA1DEB2 /* XCRemoteSwiftPackageReference "CodableCSV" */,
 				29BB9CFA7B26927E73D275AC /* XCRemoteSwiftPackageReference "CoreXLSX" */,
 			);
-			preferredProjectObjectVersion = 54;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = D05BD3077A3155D80C178C17 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -557,6 +561,7 @@
 				9015F87D3957BF174417B640 /* DateRangePicker.swift in Sources */,
 				20D065D331B242A94A0B01C9 /* Decimal+Extensions.swift in Sources */,
 				B2925740AED70E7F00D91C12 /* DefaultCategorySeeder.swift in Sources */,
+				43B23308DB55A2C8D4CB2828 /* DesignTokens.swift in Sources */,
 				DE70B07440F45DD8C6471AAD /* EmptyStateView.swift in Sources */,
 				495271ADF0C710B47620C5F3 /* HomeBalanceApp.swift in Sources */,
 				4F5A89F8925EFF8183C5D6AD /* Household.swift in Sources */,
@@ -600,6 +605,7 @@
 				6BEE75696C8D0DCF98C8A973 /* DateRangePicker.swift in Sources */,
 				3113D4DC4359665D889DD666 /* Decimal+Extensions.swift in Sources */,
 				95A71A7C85E1A0295BC2A568 /* DefaultCategorySeeder.swift in Sources */,
+				D4E8BBE2B8ECD795AED0D4F4 /* DesignTokens.swift in Sources */,
 				70386AA23B859CCA0B4DD944 /* EmptyStateView.swift in Sources */,
 				72388168BC562A7D8490A6F0 /* HomeBalanceApp.swift in Sources */,
 				D858AF70C7DB6EDCEA44D048 /* Household.swift in Sources */,

@@ -1,6 +1,7 @@
 import SwiftUI
 
-/// Shows the most recent transactions as a compact card.
+/// Recent activity card on the Dashboard.
+/// Design: "The Financial Curator" — white card, no dividers, icon badges, coloured amounts.
 struct RecentTransactionsCard: View {
     let transactions: [Transaction]
     let currency: String
@@ -8,61 +9,68 @@ struct RecentTransactionsCard: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            // Header
+            // ── Header ────────────────────────────────────────────────────────
             HStack {
                 Text("recent_transactions")
-                    .font(.headline)
+                    .font(.hbHeadlineMedium)
+                    .foregroundStyle(.hbOnSurface)
                 Spacer()
                 if let onViewAll {
-                    Button("view_all", action: onViewAll)
-                        .font(.subheadline)
+                    Button(action: onViewAll) {
+                        Text("view_all")
+                            .font(.hbLabelLarge)
+                            .foregroundStyle(.hbPrimary)
+                    }
+                    .buttonStyle(.plain)
                 }
             }
-            .padding(.horizontal, 16)
-            .padding(.vertical, 12)
+            .padding(.horizontal, HBSpacing.md)
+            .padding(.vertical, HBSpacing.md)
 
-            Divider()
-
+            // ── Rows ──────────────────────────────────────────────────────────
             if transactions.isEmpty {
-                Text("no_transactions_this_month")
-                    .font(.subheadline)
-                    .foregroundStyle(.secondary)
-                    .padding(16)
+                emptyState
             } else {
-                ForEach(Array(transactions.enumerated()), id: \.element.id) { index, transaction in
-                    transactionRow(transaction)
-                    if index < transactions.count - 1 {
-                        Divider().padding(.leading, 52)
+                VStack(spacing: 0) {
+                    ForEach(transactions) { transaction in
+                        transactionRow(transaction)
                     }
                 }
             }
         }
-        .background(.background)
-        .clipShape(RoundedRectangle(cornerRadius: 12))
-        .shadow(color: .black.opacity(0.06), radius: 6, x: 0, y: 2)
+        .hbCard()
     }
+
+    // MARK: - Transaction row
 
     @ViewBuilder
     private func transactionRow(_ transaction: Transaction) -> some View {
-        HStack(spacing: 12) {
-            // Category icon
+        let color = transaction.isTransfer
+            ? Color.hbPrimary
+            : Color(hex: transaction.category?.color ?? "#8E8E93")
+
+        HStack(spacing: HBSpacing.md) {
+            // Icon badge
             ZStack {
                 Circle()
-                    .fill(Color(hex: transaction.category?.color ?? "#8E8E93").opacity(0.15))
-                    .frame(width: 36, height: 36)
-                Image(systemName: transaction.category?.icon ?? "questionmark.circle")
-                    .font(.system(size: 16))
-                    .foregroundStyle(Color(hex: transaction.category?.color ?? "#8E8E93"))
+                    .fill(color.opacity(0.12))
+                    .frame(width: 40, height: 40)
+                Image(systemName: transaction.isTransfer
+                      ? "arrow.left.arrow.right"
+                      : (transaction.category?.icon ?? "questionmark.circle"))
+                    .font(.system(size: 17))
+                    .foregroundStyle(color)
             }
 
             // Description + date
             VStack(alignment: .leading, spacing: 2) {
                 Text(transaction.descriptionText)
                     .font(.subheadline)
+                    .foregroundStyle(.hbOnSurface)
                     .lineLimit(1)
                 Text(transaction.date.formatted(date: .abbreviated, time: .omitted))
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
+                    .font(.hbLabelSmall)
+                    .foregroundStyle(.hbOnSurfaceVariant)
             }
 
             Spacer()
@@ -70,10 +78,31 @@ struct RecentTransactionsCard: View {
             // Amount
             Text(transaction.amount.formatted(currency: currency))
                 .font(.subheadline.weight(.semibold))
-                .foregroundStyle(transaction.amount >= 0 ? .green : .primary)
+                .foregroundStyle(amountColor(for: transaction))
         }
-        .padding(.horizontal, 16)
-        .padding(.vertical, 10)
+        .padding(.horizontal, HBSpacing.md)
+        .padding(.vertical, HBSpacing.sm + 2)
+    }
+
+    // MARK: - Empty state
+
+    private var emptyState: some View {
+        VStack(spacing: HBSpacing.sm) {
+            Image(systemName: "tray")
+                .font(.system(size: 28))
+                .foregroundStyle(.hbOnSurfaceVariant.opacity(0.5))
+            Text("no_transactions_this_month")
+                .font(.subheadline)
+                .foregroundStyle(.hbOnSurfaceVariant)
+        }
+        .frame(maxWidth: .infinity)
+        .padding(.vertical, HBSpacing.xl)
+    }
+
+    // MARK: - Helpers
+
+    private func amountColor(for transaction: Transaction) -> Color {
+        if transaction.isTransfer { return .hbPrimary }
+        return transaction.amount >= 0 ? .hbPositive : .hbNegative
     }
 }
-

@@ -1,7 +1,7 @@
 import SwiftUI
 
 /// A text field specialised for monetary input.
-/// Shows a currency symbol prefix and validates on-the-fly.
+/// Design: "The Financial Curator" — currency prefix, inline validation indicator.
 struct AmountField: View {
     let label: LocalizedStringKey
     @Binding var text: String
@@ -11,13 +11,16 @@ struct AmountField: View {
     @State private var isValid = true
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 4) {
-            HStack {
+        VStack(alignment: .leading, spacing: HBSpacing.xs) {
+            HStack(spacing: HBSpacing.sm) {
+                // Currency symbol
                 Text(currencySymbol)
-                    .foregroundStyle(.secondary)
-                    .font(.body.weight(.medium))
+                    .font(.hbHeadlineMedium)
+                    .foregroundStyle(.hbPrimary)
 
+                // Text field
                 TextField(placeholder, text: $text)
+                    .font(.hbHeadlineMedium)
                     #if os(iOS)
                     .keyboardType(.decimalPad)
                     #endif
@@ -25,21 +28,32 @@ struct AmountField: View {
                         isValid = validate(newValue)
                     }
             }
-            .padding(10)
-            .background(.background)
-            .clipShape(RoundedRectangle(cornerRadius: 8))
+            .padding(.horizontal, HBSpacing.md)
+            .padding(.vertical, HBSpacing.sm + 2)
+            .background(Color.white)
+            .clipShape(RoundedRectangle(cornerRadius: HBRadius.chip))
             .overlay {
-                RoundedRectangle(cornerRadius: 8)
-                    .strokeBorder(isValid ? Color.secondary.opacity(0.3) : Color.red, lineWidth: 1)
+                RoundedRectangle(cornerRadius: HBRadius.chip)
+                    .strokeBorder(
+                        isValid ? Color.hbSurfaceVariant : Color.hbError,
+                        lineWidth: 1.5
+                    )
             }
 
+            // Inline error
             if !isValid {
-                Text("invalid_amount")
-                    .font(.caption)
-                    .foregroundStyle(.red)
+                HStack(spacing: HBSpacing.xs) {
+                    Image(systemName: "exclamationmark.circle.fill")
+                        .font(.caption)
+                    Text("invalid_amount")
+                        .font(.hbLabelSmall)
+                }
+                .foregroundStyle(.hbError)
             }
         }
     }
+
+    // MARK: - Helpers
 
     private var currencySymbol: String {
         let formatter = NumberFormatter()
@@ -63,4 +77,5 @@ struct AmountField: View {
     Form {
         AmountField(label: "Amount", text: $amount, currency: "EUR")
     }
+    .background(Color.hbSurface)
 }

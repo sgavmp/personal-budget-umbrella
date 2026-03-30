@@ -1,40 +1,42 @@
 import SwiftUI
 
 /// A single row in the transaction list.
+/// Design: "The Financial Curator" — category icon badge, coloured amounts.
 struct TransactionRowView: View {
     let transaction: Transaction
     let currency: String
 
     var body: some View {
-        HStack(spacing: 12) {
+        HStack(spacing: HBSpacing.md) {
             // Category icon badge
             ZStack {
                 Circle()
-                    .fill(badgeColor.opacity(0.15))
-                    .frame(width: 40, height: 40)
+                    .fill(badgeColor.opacity(0.12))
+                    .frame(width: 44, height: 44)
                 Image(systemName: iconName)
-                    .font(.system(size: 18))
+                    .font(.system(size: 19))
                     .foregroundStyle(badgeColor)
             }
 
-            // Content
+            // Description + meta
             VStack(alignment: .leading, spacing: 3) {
                 Text(transaction.descriptionText)
                     .font(.subheadline)
+                    .foregroundStyle(.hbOnSurface)
                     .lineLimit(1)
 
-                HStack(spacing: 6) {
+                HStack(spacing: HBSpacing.xs) {
                     Text(transaction.date.formatted(date: .abbreviated, time: .omitted))
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
+                        .font(.hbLabelSmall)
+                        .foregroundStyle(.hbOnSurfaceVariant)
 
                     if let cat = transaction.category {
                         Text("·")
-                            .font(.caption)
-                            .foregroundStyle(.secondary)
+                            .font(.hbLabelSmall)
+                            .foregroundStyle(.hbOnSurfaceVariant)
                         Text(cat.name)
-                            .font(.caption)
-                            .foregroundStyle(.secondary)
+                            .font(.hbLabelSmall)
+                            .foregroundStyle(.hbOnSurfaceVariant)
                             .lineLimit(1)
                     }
                 }
@@ -42,8 +44,8 @@ struct TransactionRowView: View {
 
             Spacer()
 
-            // Amount
-            VStack(alignment: .trailing, spacing: 2) {
+            // Amount + transfer badge
+            VStack(alignment: .trailing, spacing: 3) {
                 Text(transaction.amount.formatted(currency: currency))
                     .font(.subheadline.weight(.semibold))
                     .foregroundStyle(amountColor)
@@ -51,15 +53,15 @@ struct TransactionRowView: View {
                 if transaction.isTransfer {
                     Text("transfer")
                         .font(.caption2)
-                        .foregroundStyle(.secondary)
-                        .padding(.horizontal, 5)
+                        .foregroundStyle(.hbPrimary)
+                        .padding(.horizontal, 6)
                         .padding(.vertical, 2)
-                        .background(Color.secondary.opacity(0.12))
+                        .background(Color.hbPrimaryContainer)
                         .clipShape(Capsule())
                 }
             }
         }
-        .padding(.vertical, 4)
+        .padding(.vertical, HBSpacing.xs + 2)
     }
 
     // MARK: - Helpers
@@ -70,12 +72,12 @@ struct TransactionRowView: View {
     }
 
     private var badgeColor: Color {
-        if transaction.isTransfer { return .blue }
+        if transaction.isTransfer { return .hbPrimary }
         return Color(hex: transaction.category?.color ?? "#8E8E93")
     }
 
     private var amountColor: Color {
-        if transaction.isTransfer { return .blue }
-        return transaction.amount >= 0 ? .green : .primary
+        if transaction.isTransfer { return .hbPrimary }
+        return transaction.amount >= 0 ? .hbPositive : .hbNegative
     }
 }

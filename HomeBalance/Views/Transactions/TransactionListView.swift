@@ -2,13 +2,14 @@ import SwiftUI
 import SwiftData
 
 /// Full transaction list with search, filters and CRUD actions.
+/// Design: "The Financial Curator" — plain list on hbSurface background.
 struct TransactionListView: View {
     let household: Household
 
     @Environment(\.modelContext) private var modelContext
     @State private var viewModel = TransactionListViewModel()
-    @State private var showingEditor = false
-    @State private var showingFilters = false
+    @State private var showingEditor      = false
+    @State private var showingFilters     = false
     @State private var editingTransaction: Transaction?
     @State private var transactionToDelete: Transaction?
     @State private var showingDeleteConfirm = false
@@ -16,52 +17,61 @@ struct TransactionListView: View {
     private let repository = TransactionRepository()
 
     var body: some View {
-        Group {
-            if viewModel.isLoading {
-                ProgressView()
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-            } else if viewModel.transactions.isEmpty {
-                EmptyStateView(
-                    icon: "list.bullet.rectangle",
-                    title: viewModel.hasActiveFilters
-                        ? "no_transactions_matching_filters"
-                        : "no_transactions_yet",
-                    subtitle: viewModel.hasActiveFilters
-                        ? "clear_filters_to_see_all"
-                        : "tap_plus_to_add_first",
-                    actionTitle: viewModel.hasActiveFilters ? "clear_filters" : nil,
-                    action: viewModel.hasActiveFilters ? { viewModel.clearFilters() } : nil
-                )
-            } else {
-                List {
-                    ForEach(viewModel.transactions) { transaction in
-                        TransactionRowView(
-                            transaction: transaction,
-                            currency: household.currency
-                        )
-                        .contentShape(Rectangle())
-                        .onTapGesture {
-                            editingTransaction = transaction
-                        }
-                        .swipeActions(edge: .trailing, allowsFullSwipe: false) {
-                            Button(role: .destructive) {
-                                transactionToDelete = transaction
-                                showingDeleteConfirm = true
-                            } label: {
-                                Label("delete", systemImage: "trash")
-                            }
-                        }
-                        .swipeActions(edge: .leading) {
-                            Button {
+        ZStack {
+            Color.hbSurface.ignoresSafeArea()
+
+            Group {
+                if viewModel.isLoading {
+                    ProgressView()
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+
+                } else if viewModel.transactions.isEmpty {
+                    EmptyStateView(
+                        icon: "list.bullet.rectangle",
+                        title: viewModel.hasActiveFilters
+                            ? "no_transactions_matching_filters"
+                            : "no_transactions_yet",
+                        subtitle: viewModel.hasActiveFilters
+                            ? "clear_filters_to_see_all"
+                            : "tap_plus_to_add_first",
+                        actionTitle: viewModel.hasActiveFilters ? "clear_filters" : nil,
+                        action: viewModel.hasActiveFilters ? { viewModel.clearFilters() } : nil
+                    )
+
+                } else {
+                    List {
+                        ForEach(viewModel.transactions) { transaction in
+                            TransactionRowView(
+                                transaction: transaction,
+                                currency: household.currency
+                            )
+                            .listRowBackground(Color.white)
+                            .listRowSeparatorTint(Color.hbSurfaceVariant)
+                            .contentShape(Rectangle())
+                            .onTapGesture {
                                 editingTransaction = transaction
-                            } label: {
-                                Label("edit", systemImage: "pencil")
                             }
-                            .tint(.blue)
+                            .swipeActions(edge: .trailing, allowsFullSwipe: false) {
+                                Button(role: .destructive) {
+                                    transactionToDelete = transaction
+                                    showingDeleteConfirm = true
+                                } label: {
+                                    Label("delete", systemImage: "trash")
+                                }
+                            }
+                            .swipeActions(edge: .leading) {
+                                Button {
+                                    editingTransaction = transaction
+                                } label: {
+                                    Label("edit", systemImage: "pencil")
+                                }
+                                .tint(.hbPrimary)
+                            }
                         }
                     }
+                    .listStyle(.plain)
+                    .scrollContentBackground(.hidden)
                 }
-                .listStyle(.plain)
             }
         }
         .navigationTitle("transactions")
@@ -75,16 +85,22 @@ struct TransactionListView: View {
                     showingEditor = true
                 } label: {
                     Image(systemName: "plus")
+                        .fontWeight(.semibold)
                 }
+                .tint(.hbPrimary)
             }
             ToolbarItem(placement: .secondaryAction) {
                 Button {
                     showingFilters = true
                 } label: {
-                    Label("filters", systemImage: viewModel.hasActiveFilters
-                          ? "line.3.horizontal.decrease.circle.fill"
-                          : "line.3.horizontal.decrease.circle")
+                    Label(
+                        "filters",
+                        systemImage: viewModel.hasActiveFilters
+                            ? "line.3.horizontal.decrease.circle.fill"
+                            : "line.3.horizontal.decrease.circle"
+                    )
                 }
+                .tint(viewModel.hasActiveFilters ? .hbPrimary : .hbOnSurfaceVariant)
             }
         }
         .sheet(isPresented: $showingEditor) {
