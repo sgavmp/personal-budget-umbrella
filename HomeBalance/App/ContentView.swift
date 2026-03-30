@@ -1,9 +1,7 @@
 import SwiftUI
 import SwiftData
 
-/// Root view. Checks whether a Household exists and routes accordingly:
-/// - No household → OnboardingView (create first household)
-/// - Household present → MainView (full app navigation)
+/// Root view. Routes to OnboardingView or MainView based on whether a Household exists.
 struct ContentView: View {
 
     @Environment(\.modelContext) private var modelContext
@@ -20,13 +18,14 @@ struct ContentView: View {
     }
 }
 
-// MARK: - Onboarding (Placeholder — Fase 8)
+// MARK: - Onboarding
 
 struct OnboardingView: View {
 
     @Environment(\.modelContext) private var modelContext
     @State private var householdName = ""
     @State private var selectedCurrency = "EUR"
+    @State private var errorMessage: String?
 
     private let currencies = ["EUR", "USD", "GBP", "CHF", "MXN", "ARS", "COP", "CLP"]
 
@@ -38,25 +37,25 @@ struct OnboardingView: View {
                     .foregroundStyle(.tint)
                 Text("HomeBalance")
                     .font(.largeTitle.bold())
-                Text("Gestión económica del hogar")
+                Text("household_economy_management")
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
             }
 
             VStack(alignment: .leading, spacing: 16) {
                 VStack(alignment: .leading, spacing: 6) {
-                    Label("Nombre del hogar", systemImage: "person.2.fill")
+                    Label("household_name", systemImage: "person.2.fill")
                         .font(.caption)
                         .foregroundStyle(.secondary)
-                    TextField("Mi Familia", text: $householdName)
+                    TextField("my_family_placeholder", text: $householdName)
                         .textFieldStyle(.roundedBorder)
                 }
 
                 VStack(alignment: .leading, spacing: 6) {
-                    Label("Moneda principal", systemImage: "eurosign.circle")
+                    Label("main_currency", systemImage: "eurosign.circle")
                         .font(.caption)
                         .foregroundStyle(.secondary)
-                    Picker("Moneda", selection: $selectedCurrency) {
+                    Picker("currency", selection: $selectedCurrency) {
                         ForEach(currencies, id: \.self) { Text($0) }
                     }
                     .pickerStyle(.segmented)
@@ -64,10 +63,17 @@ struct OnboardingView: View {
             }
             .padding(.horizontal)
 
+            if let error = errorMessage {
+                Text(error)
+                    .font(.caption)
+                    .foregroundStyle(.red)
+                    .padding(.horizontal)
+            }
+
             Button {
                 createHousehold()
             } label: {
-                Label("Crear hogar", systemImage: "checkmark")
+                Label("create_household", systemImage: "checkmark")
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 4)
             }
@@ -82,154 +88,118 @@ struct OnboardingView: View {
     private func createHousehold() {
         let name = householdName.trimmingCharacters(in: .whitespaces)
         guard !name.isEmpty else { return }
-
         let household = Household(name: name, currency: selectedCurrency)
         modelContext.insert(household)
-
         do {
             try DefaultCategorySeeder.seed(into: household, context: modelContext)
             try modelContext.save()
         } catch {
-            // TODO: Surface error to user — Phase 8 polish
-            print("Error creating household: \(error)")
+            errorMessage = error.localizedDescription
         }
     }
 }
 
-// MARK: - Main Navigation (Placeholder — expandido en Fase 2)
+// MARK: - Main Navigation
 
 struct MainView: View {
-
     let household: Household
+    @State private var sidebarSelection: SidebarView.SidebarItem? = .dashboard
 
     var body: some View {
         #if os(macOS)
         NavigationSplitView {
-            SidebarView(household: household)
+            SidebarView(household: household, selection: $sidebarSelection)
         } detail: {
-            DashboardPlaceholderView(household: household)
+            MainView.detailView(for: sidebarSelection, household: household)
         }
         #else
         TabView {
             NavigationStack {
-                DashboardPlaceholderView(household: household)
+                DashboardView(household: household)
             }
-            .tabItem { Label("Inicio", systemImage: "house.fill") }
+            .tabItem { Label("dashboard", systemImage: "house.fill") }
 
             NavigationStack {
-                Text("Transacciones")
-                    .navigationTitle("Transacciones")
+                TransactionListView(household: household)
             }
-            .tabItem { Label("Transacciones", systemImage: "list.bullet.rectangle") }
+            .tabItem { Label("transactions", systemImage: "list.bullet.rectangle") }
 
             NavigationStack {
-                Text("Presupuesto")
-                    .navigationTitle("Presupuesto")
+                Text("budget_placeholder")
+                    .navigationTitle("budget")
             }
-            .tabItem { Label("Presupuesto", systemImage: "chart.bar.fill") }
+            .tabItem { Label("budget", systemImage: "chart.bar.fill") }
 
             NavigationStack {
-                Text("Más")
-                    .navigationTitle("Más")
+                Text("more_placeholder")
+                    .navigationTitle("more")
             }
-            .tabItem { Label("Más", systemImage: "ellipsis.circle") }
+            .tabItem { Label("more", systemImage: "ellipsis.circle") }
         }
         #endif
     }
 }
 
-// MARK: - macOS Sidebar (Placeholder — Fase 2)
+// MARK: - macOS Sidebar
 
 struct SidebarView: View {
-
     let household: Household
-    @State private var selection: SidebarItem? = .dashboard
+    @Binding var selection: SidebarItem?
 
-    enum SidebarItem: String, CaseIterable {
-        case dashboard = "Inicio"
-        case transactions = "Transacciones"
-        case budget = "Presupuesto"
-        case charts = "Gráficas"
-        case importData = "Importar"
-        case settings = "Ajustes"
+    enum SidebarItem: String, CaseIterable, Identifiable {
+        case dashboard    = "dashboard"
+        case transactions = "transactions"
+        case budget       = "budget"
+        case charts       = "charts"
+        case importData   = "import"
+        case settings     = "settings"
+
+        var id: String { rawValue }
 
         var icon: String {
             switch self {
-            case .dashboard:     "house.fill"
-            case .transactions:  "list.bullet.rectangle"
-            case .budget:        "chart.bar.fill"
-            case .charts:        "chart.line.uptrend.xyaxis"
-            case .importData:    "arrow.down.doc.fill"
-            case .settings:      "gearshape.fill"
+            case .dashboard:    "house.fill"
+            case .transactions: "list.bullet.rectangle"
+            case .budget:       "chart.bar.fill"
+            case .charts:       "chart.line.uptrend.xyaxis"
+            case .importData:   "arrow.down.doc.fill"
+            case .settings:     "gearshape.fill"
             }
         }
+
+        var localizedLabel: LocalizedStringKey { LocalizedStringKey(rawValue) }
     }
 
     var body: some View {
-        List(SidebarItem.allCases, id: \.self, selection: $selection) { item in
-            Label(item.rawValue, systemImage: item.icon)
+        List(SidebarItem.allCases, selection: $selection) { item in
+            Label(item.localizedLabel, systemImage: item.icon)
+                .tag(item)
         }
         .navigationTitle(household.name)
         .listStyle(.sidebar)
+        .navigationSplitViewColumnWidth(min: 180, ideal: 220)
     }
 }
 
-// MARK: - Dashboard Placeholder (reemplazado en Fase 2)
+// MARK: - macOS Detail router
 
-struct DashboardPlaceholderView: View {
-
-    let household: Household
-
-    var body: some View {
-        ScrollView {
-            VStack(spacing: 24) {
-                // Status card
-                GroupBox {
-                    VStack(spacing: 12) {
-                        Image(systemName: "checkmark.seal.fill")
-                            .font(.system(size: 40))
-                            .foregroundStyle(.green)
-                        Text("Hogar creado correctamente")
-                            .font(.headline)
-                        Text(household.name)
-                            .foregroundStyle(.secondary)
-                        Text("Moneda: \(household.currency)")
-                            .foregroundStyle(.secondary)
-                    }
-                    .frame(maxWidth: .infinity)
-                    .padding()
-                } label: {
-                    Label("HomeBalance", systemImage: "house.fill")
-                }
-
-                // Category count card
-                GroupBox {
-                    HStack {
-                        VStack(alignment: .leading) {
-                            Text("\(household.categories.count)")
-                                .font(.largeTitle.bold())
-                                .foregroundStyle(.tint)
-                            Text("Categorías cargadas")
-                                .font(.caption)
-                                .foregroundStyle(.secondary)
-                        }
-                        Spacer()
-                        Image(systemName: "tag.fill")
-                            .font(.largeTitle)
-                            .foregroundStyle(.tint.opacity(0.3))
-                    }
-                    .padding()
-                } label: {
-                    Label("Categorías", systemImage: "tag.fill")
-                }
-
-                Text("Las vistas completas se implementarán en la Fase 2")
-                    .font(.caption)
-                    .foregroundStyle(.tertiary)
-            }
-            .padding()
+extension MainView {
+    @ViewBuilder
+    static func detailView(for item: SidebarView.SidebarItem?, household: Household) -> some View {
+        switch item {
+        case .dashboard, .none:
+            DashboardView(household: household)
+        case .transactions:
+            TransactionListView(household: household)
+        case .budget:
+            Text("budget_coming_soon").foregroundStyle(.secondary)
+        case .charts:
+            Text("charts_coming_soon").foregroundStyle(.secondary)
+        case .importData:
+            Text("import_coming_soon").foregroundStyle(.secondary)
+        case .settings:
+            Text("settings_coming_soon").foregroundStyle(.secondary)
         }
-        .navigationTitle("Inicio")
     }
 }
 
