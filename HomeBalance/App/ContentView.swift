@@ -131,8 +131,7 @@ struct MainView: View {
             .tabItem { Label("budget", systemImage: "chart.bar.fill") }
 
             NavigationStack {
-                Text("more_placeholder")
-                    .navigationTitle("more")
+                MoreView(household: household)
             }
             .tabItem { Label("more", systemImage: "ellipsis.circle") }
         }
@@ -152,6 +151,7 @@ struct SidebarView: View {
         case budget       = "budget"
         case charts       = "charts"
         case importData   = "import"
+        case rules        = "rules"
         case settings     = "settings"
 
         var id: String { rawValue }
@@ -163,6 +163,7 @@ struct SidebarView: View {
             case .budget:       "chart.bar.fill"
             case .charts:       "chart.line.uptrend.xyaxis"
             case .importData:   "arrow.down.doc.fill"
+            case .rules:        "tag.fill"
             case .settings:     "gearshape.fill"
             }
         }
@@ -196,9 +197,101 @@ extension MainView {
         case .charts:
             Text("charts_coming_soon").foregroundStyle(.secondary)
         case .importData:
-            Text("import_coming_soon").foregroundStyle(.secondary)
+            ImportWizardContainerView(household: household)
+        case .rules:
+            CategorizationRulesView(household: household)
         case .settings:
             Text("settings_coming_soon").foregroundStyle(.secondary)
+        }
+    }
+}
+
+// MARK: - Import Wizard Container (macOS detail panel wrapper)
+
+/// On macOS the import wizard is shown as an inline detail; on iOS it's a sheet.
+struct ImportWizardContainerView: View {
+    let household: Household
+    @State private var showingWizard = false
+
+    var body: some View {
+        VStack(spacing: HBSpacing.lg) {
+            Spacer()
+            Image(systemName: "arrow.down.doc.fill")
+                .font(.system(size: 56))
+                .foregroundStyle(Color.hbPrimary)
+            Text("Import Transactions")
+                .font(.hbHeadlineLarge)
+            Text("Import CSV or Excel bank statements and let HomeBalance categorise them automatically.")
+                .font(.hbLabelLarge)
+                .foregroundStyle(Color.hbOnSurfaceVariant)
+                .multilineTextAlignment(.center)
+                .padding(.horizontal, HBSpacing.xl)
+            Button {
+                showingWizard = true
+            } label: {
+                Text("Start Import Wizard")
+                    .font(.hbLabelLarge.weight(.semibold))
+                    .foregroundStyle(.white)
+                    .padding(.horizontal, HBSpacing.xl)
+                    .padding(.vertical, HBSpacing.md)
+                    .background(LinearGradient.hbPrimaryGradient)
+                    .clipShape(Capsule())
+            }
+            .buttonStyle(.plain)
+            Spacer()
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color.hbSurface)
+        .sheet(isPresented: $showingWizard) {
+            ImportWizardView(household: household)
+        }
+    }
+}
+
+// MARK: - More View (iOS "More" tab)
+
+struct MoreView: View {
+    let household: Household
+    @State private var showingImport = false
+
+    var body: some View {
+        List {
+            Section("Tools") {
+                Button {
+                    showingImport = true
+                } label: {
+                    Label("Import Transactions", systemImage: "arrow.down.doc.fill")
+                        .foregroundStyle(Color.hbOnSurface)
+                }
+
+                NavigationLink {
+                    CategorizationRulesView(household: household)
+                } label: {
+                    Label("Categorization Rules", systemImage: "tag.fill")
+                }
+            }
+
+            Section("Household") {
+                NavigationLink {
+                    Text("Settings coming soon")
+                } label: {
+                    Label("Settings", systemImage: "gearshape.fill")
+                }
+            }
+        }
+        .navigationTitle("More")
+        #if os(iOS)
+        .navigationBarTitleDisplayMode(.inline)
+        #endif
+        #if os(iOS)
+        .listStyle(.insetGrouped)
+        #else
+        .listStyle(.inset)
+        #endif
+        .scrollContentBackground(.hidden)
+        .background(Color.hbSurface)
+        .sheet(isPresented: $showingImport) {
+            ImportWizardView(household: household)
         }
     }
 }
